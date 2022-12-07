@@ -38,10 +38,15 @@ class CountryListViewController: UIViewController {
         configureTableView()
         setupBinder()
         callToViewModelToUpdateUI()
-        
         configureSearchController()
     }
-
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        searchController.searchBar.sizeToFit()
+        navigationItem.hidesSearchBarWhenScrolling.toggle()
+    }
+    
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
