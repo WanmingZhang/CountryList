@@ -8,9 +8,9 @@
 import Foundation
 
 /**
- * helper class for binding of our view and view model.
+ * helper class for binding of views and view models.
  * class is initialized with the value we want to observe.
- * function bind that does the actual binding.
+ * function bind that does the binding.
  * observer is our closure called when the value is set.
  */
 

@@ -8,8 +8,7 @@
 import Foundation
 
 /**
- * data models
- * structures for decoding country list json
+ * data models for country list json
  */
 
 struct Country: Decodable {
@@ -29,21 +28,6 @@ struct Country: Decodable {
         case language = "language"
         case name = "name"
         case region = "region"
-    }
-    
-    // provide an init method for Country struct
-    init(_ name: String,
-         _ region: String,
-         _ code: String,
-         _ capital: String
-    ) {
-        self.capital = capital
-        self.code = code
-        self.currency = Currency(code: "", name: "", symbol: "")
-        self.flagUrl = ""
-        self.language = Language(code: "", name: "")
-        self.name = name
-        self.region = region
     }
 }
 

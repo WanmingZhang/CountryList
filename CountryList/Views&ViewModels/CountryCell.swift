@@ -17,12 +17,7 @@ class CountryCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    // update UI with data
     func update(with country: Country) {
         let name = country.name
         let region = country.region

@@ -35,6 +35,7 @@ class CountryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Countries"
         configureTableView()
         setupBinder()
         callToViewModelToUpdateUI()
