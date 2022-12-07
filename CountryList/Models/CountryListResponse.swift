@@ -8,7 +8,7 @@
 import Foundation
 
 /**
- * data models 
+ * data models
  * structures for decoding country list json
  */
 

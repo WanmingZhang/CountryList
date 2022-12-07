@@ -7,11 +7,23 @@
 
 import UIKit
 
+/**
+ * a searchable list of countries
+ */
+
 class CountryListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     let viewModel: CountryListViewModel
     let reuseCellId = "CountryCell"
+    
+    // search controller
+    let searchController = UISearchController(searchResultsController: nil)
+    var isFiltering: Bool {
+        let isSearchBarEmpty = searchController.searchBar.text?.isEmpty ?? true
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    var filteredCountries: [Country] = []
     
     required init?(coder: NSCoder) {
         let apiManager = CountryService()
@@ -23,10 +35,11 @@ class CountryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         configureTableView()
         setupBinder()
         callToViewModelToUpdateUI()
+        
+        configureSearchController()
     }
 
     func configureTableView() {
@@ -46,17 +59,23 @@ class CountryListViewController: UIViewController {
             }
         }
     }
+    
+    func configureSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search countries"
+        navigationItem.searchController = searchController
+    }
 }
 
 extension CountryListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard viewModel.countries.value.count > 0 else {
-            return 0
+        if isFiltering {
+            return filteredCountries.count
         }
         return viewModel.countries.value.count
     }
@@ -69,6 +88,11 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
         guard viewModel.countries.value.count > 0 else {
             return cell
         }
+        if isFiltering {
+            let country = filteredCountries[indexPath.row]
+            countryCell.update(with: country)
+            return countryCell
+        }
         let country = viewModel.countries.value[indexPath.row]
         countryCell.update(with: country)
         return countryCell
@@ -78,4 +102,16 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
         return UITableView.automaticDimension
     }
     
+}
+
+extension CountryListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        filterContentForSearchText(text)
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredCountries = viewModel.countries.value.filter { $0.name.lowercased().contains(searchText.lowercased()) || $0.capital.lowercased().contains(searchText.lowercased()) }
+        tableView.reloadData()
+    }
 }
