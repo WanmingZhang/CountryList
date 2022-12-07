@@ -7,12 +7,17 @@
 
 import Foundation
 
+/**
+ * VIew model for CountryListViewController
+ */
+
 class CountryListViewModel {
 
     var apiManager: CountryServiceProtocol
     var countries: Observable<[Country]> = Observable([])
     var errorMsg: Observable<String?> = Observable(nil)
     
+    // pass in a protocol type instead of the concrete type, which makes the code flexible and easy to test.
     init(_ apiManager: CountryServiceProtocol) {
         self.apiManager = apiManager
     }

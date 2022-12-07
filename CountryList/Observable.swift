@@ -7,6 +7,13 @@
 
 import Foundation
 
+/**
+ * helper class for binding of our view and view model.
+ * class is initialized with the value we want to observe.
+ * function bind that does the actual binding.
+ * observer is our closure called when the value is set.
+ */
+
 class Observable<T> {
     var value: T {
         didSet {

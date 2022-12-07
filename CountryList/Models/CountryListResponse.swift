@@ -7,26 +7,10 @@
 
 import Foundation
 
-struct CountryListResponse: Decodable {
-    let countryList: [Country]
-}
-
-//{
-//  "capital": "Pago Pago",
-//  "code": "AS",
-//  "currency": {
-//    "code": "USD",
-//    "name": "United State Dollar",
-//    "symbol": "$"
-//  },
-//  "flag": "https://restcountries.eu/data/asm.svg",
-//  "language": {
-//    "code": "en",
-//    "name": "English"
-//  },
-//  "name": "American Samoa",
-//  "region": "OC"
-//}
+/**
+ * data models 
+ * structures for decoding country list json
+ */
 
 struct Country: Decodable {
     let capital: String
@@ -45,14 +29,27 @@ struct Country: Decodable {
         case language = "language"
         case name = "name"
         case region = "region"
-        
     }
     
+    // provide an init method for Country struct
+    init(_ name: String,
+         _ region: String,
+         _ code: String,
+         _ capital: String
+    ) {
+        self.capital = capital
+        self.code = code
+        self.currency = Currency(code: "", name: "", symbol: "")
+        self.flagUrl = ""
+        self.language = Language(code: "", name: "")
+        self.name = name
+        self.region = region
+    }
 }
 
 struct Currency: Decodable {
-    let code: String?
-    let name: String?
+    let code: String
+    let name: String
     let symbol: String?
     
     enum CodingKeys: String, CodingKey {

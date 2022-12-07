@@ -70,12 +70,12 @@
 			children = (
 				C7AE136F294017FA005BDF5A /* AppDelegate.swift */,
 				C7AE1371294017FA005BDF5A /* SceneDelegate.swift */,
+				C7AE138929402CD8005BDF5A /* Observable.swift */,
 				C7AE138D29402D3A005BDF5A /* Views */,
 				C7AE1378294017FA005BDF5A /* Assets.xcassets */,
 				C7AE137A294017FA005BDF5A /* LaunchScreen.storyboard */,
 				C7AE137D294017FA005BDF5A /* Info.plist */,
 				C7AE138F29402D81005BDF5A /* Models */,
-				C7AE138E29402D5A005BDF5A /* MVVM */,
 				C7AE139029402D8F005BDF5A /* Networks */,
 			);
 			path = CountryList;
@@ -90,14 +90,6 @@
 				C7AE1385294025FD005BDF5A /* CountryListViewModel.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		C7AE138E29402D5A005BDF5A /* MVVM */ = {
-			isa = PBXGroup;
-			children = (
-				C7AE138929402CD8005BDF5A /* Observable.swift */,
-			);
-			path = MVVM;
 			sourceTree = "<group>";
 		};
 		C7AE138F29402D81005BDF5A /* Models */ = {
