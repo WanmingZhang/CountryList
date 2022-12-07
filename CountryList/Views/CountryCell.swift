@@ -11,6 +11,7 @@ class CountryCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var capital: UILabel!
     @IBOutlet weak var code: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,9 +24,14 @@ class CountryCell: UITableViewCell {
     }
     
     func update(with country: Country) {
-        self.name.text = country.name
+        let name = country.name
+        let region = country.region
+        let nameText = "\(name), \(region)"
+        self.name.text = nameText
         self.capital.text = country.capital
         self.code.text = country.code
     }
+    
+    
 
 }
