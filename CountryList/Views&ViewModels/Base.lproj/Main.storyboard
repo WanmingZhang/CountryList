@@ -28,10 +28,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0gv-vy-qR1">
-                                                    <rect key="frame" x="24" y="20" width="279.66666666666669" height="80"/>
+                                                    <rect key="frame" x="24" y="24" width="279.66666666666669" height="72"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGK-c7-JlY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="279.66666666666669" height="40.666666666666664"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="279.66666666666669" height="32.666666666666664"/>
                                                             <attributedString key="attributedText">
                                                                 <fragment content="Label">
                                                                     <attributes>
@@ -43,7 +43,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1n6-kh-8QY">
-                                                            <rect key="frame" x="0.0" y="59.666666666666679" width="279.66666666666669" height="20.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="51.666666666666671" width="279.66666666666669" height="20.333333333333329"/>
                                                             <attributedString key="attributedText">
                                                                 <fragment content="Label">
                                                                     <attributes>
@@ -60,7 +60,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynw-XM-Wvi">
-                                                    <rect key="frame" x="327.66666666666669" y="20" width="41.333333333333314" height="20.333333333333329"/>
+                                                    <rect key="frame" x="327.66666666666669" y="24" width="41.333333333333314" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -68,10 +68,10 @@
                                             </subviews>
                                             <viewLayoutGuide key="safeArea" id="vf5-oy-6RL"/>
                                             <constraints>
-                                                <constraint firstItem="ynw-XM-Wvi" firstAttribute="top" secondItem="vf5-oy-6RL" secondAttribute="top" constant="20" id="7iP-OG-EbM"/>
+                                                <constraint firstItem="ynw-XM-Wvi" firstAttribute="top" secondItem="vf5-oy-6RL" secondAttribute="top" constant="24" id="7iP-OG-EbM"/>
                                                 <constraint firstItem="vf5-oy-6RL" firstAttribute="trailing" secondItem="ynw-XM-Wvi" secondAttribute="trailing" constant="24" id="UWh-jN-ayT"/>
-                                                <constraint firstItem="vf5-oy-6RL" firstAttribute="bottom" secondItem="0gv-vy-qR1" secondAttribute="bottom" constant="20" id="WSo-mj-lal"/>
-                                                <constraint firstItem="0gv-vy-qR1" firstAttribute="top" secondItem="vf5-oy-6RL" secondAttribute="top" constant="20" id="ZYv-0o-vPa"/>
+                                                <constraint firstItem="vf5-oy-6RL" firstAttribute="bottom" secondItem="0gv-vy-qR1" secondAttribute="bottom" constant="24" id="WSo-mj-lal"/>
+                                                <constraint firstItem="0gv-vy-qR1" firstAttribute="top" secondItem="vf5-oy-6RL" secondAttribute="top" constant="24" id="ZYv-0o-vPa"/>
                                                 <constraint firstItem="0gv-vy-qR1" firstAttribute="leading" secondItem="vf5-oy-6RL" secondAttribute="leading" constant="24" id="oX9-lj-FaY"/>
                                                 <constraint firstItem="ynw-XM-Wvi" firstAttribute="leading" secondItem="0gv-vy-qR1" secondAttribute="trailing" constant="24" id="pNF-bh-VnI"/>
                                             </constraints>
