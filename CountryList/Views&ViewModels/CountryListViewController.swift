@@ -35,11 +35,10 @@ class CountryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Countries"
         configureTableView()
         setupBinder()
         callToViewModelToUpdateUI()
-        configureSearchController()
+        configureNavAndSearchBar()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -66,8 +65,10 @@ class CountryListViewController: UIViewController {
         }
     }
     
-    func configureSearchController() {
+    func configureNavAndSearchBar() {
+        navigationItem.title = "Countries"
         searchController.searchResultsUpdater = self
+        searchController.definesPresentationContext = true
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search countries"
         navigationItem.searchController = searchController
@@ -107,7 +108,6 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
 }
 
 extension CountryListViewController: UISearchResultsUpdating {
@@ -117,6 +117,7 @@ extension CountryListViewController: UISearchResultsUpdating {
     }
     
     func filterContentForSearchText(_ searchText: String) {
+        // added .lowercased() to make searches case independent
         filteredCountries = viewModel.countries.value.filter { $0.name.lowercased().contains(searchText.lowercased()) || $0.capital.lowercased().contains(searchText.lowercased()) }
         tableView.reloadData()
     }
