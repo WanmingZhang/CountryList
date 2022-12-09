@@ -18,6 +18,7 @@
 		C7AE138829402CC7005BDF5A /* CountryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE138729402CC7005BDF5A /* CountryListResponse.swift */; };
 		C7AE138A29402CD8005BDF5A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE138929402CD8005BDF5A /* Observable.swift */; };
 		C7AE138C29402D06005BDF5A /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE138B29402D06005BDF5A /* CountryService.swift */; };
+		C7AE13942942A50B005BDF5A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE13932942A50B005BDF5A /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C7AE138729402CC7005BDF5A /* CountryListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListResponse.swift; sourceTree = "<group>"; };
 		C7AE138929402CD8005BDF5A /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C7AE138B29402D06005BDF5A /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
+		C7AE13932942A50B005BDF5A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				C7AE138B29402D06005BDF5A /* CountryService.swift */,
+				C7AE13932942A50B005BDF5A /* ImageLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				C7AE1370294017FA005BDF5A /* AppDelegate.swift in Sources */,
 				C7AE138A29402CD8005BDF5A /* Observable.swift in Sources */,
 				C7AE138C29402D06005BDF5A /* CountryService.swift in Sources */,
+				C7AE13942942A50B005BDF5A /* ImageLoader.swift in Sources */,
 				C7AE138829402CC7005BDF5A /* CountryListResponse.swift in Sources */,
 				C7AE1386294025FD005BDF5A /* CountryListViewModel.swift in Sources */,
 				C7AE1372294017FA005BDF5A /* SceneDelegate.swift in Sources */,
