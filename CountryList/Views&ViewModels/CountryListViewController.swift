@@ -6,16 +6,17 @@
 //
 
 import UIKit
-
+import Combine
 /**
  * a searchable list of countries
  */
 
 class CountryListViewController: UIViewController {
-
+    var subscriptions = Set<AnyCancellable>()
     @IBOutlet weak var tableView: UITableView!
     let viewModel: CountryListViewModel
     let reuseCellId = "CountryCell"
+    
     
     // search controller
     let searchController = UISearchController(searchResultsController: nil)
@@ -53,18 +54,29 @@ class CountryListViewController: UIViewController {
     }
     
     func callToViewModelToUpdateUI() {
-        viewModel.getCountryList()
+        //viewModel.getCountryList()
+        viewModel.fetchCountryList()
     }
     
-    // binding of view and view model
+    // binding of view and view model using Combine
     func setupBinder() {
-        viewModel.countries.bind { (_) in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        viewModel.countries.sink { [unowned self] (_) in
+            self.tableView.reloadData()
         }
+        .store(in: &subscriptions)
+        
+
     }
-    
+    /// binding of view and view model using Observable
+    /**
+     //    func setupBinder() {
+     //        viewModel.countries.bind { (_) in
+     //            DispatchQueue.main.async {
+     //                self.tableView.reloadData()
+     //            }
+     //        }
+     //    }
+     */
     func configureNavAndSearchBar() {
         navigationItem.title = "Countries"
         searchController.searchResultsUpdater = self
@@ -84,7 +96,8 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
         if isFiltering {
             return filteredCountries.count
         }
-        return viewModel.countries.value.count
+        //return viewModel.countries.value.count
+        return self.viewModel.countries.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,7 +105,7 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
         guard let countryCell = tableView.dequeueReusableCell(withIdentifier: reuseCellId, for: indexPath) as? CountryCell else {
             return cell
         }
-        guard viewModel.countries.value.count > 0 else {
+        guard self.self.viewModel.countries.value.count > 0 else {
             return cell
         }
         if isFiltering {
@@ -100,7 +113,7 @@ extension CountryListViewController: UITableViewDelegate, UITableViewDataSource 
             countryCell.update(with: country)
             return countryCell
         }
-        let country = viewModel.countries.value[indexPath.row]
+        let country = self.viewModel.countries.value[indexPath.row]
         countryCell.update(with: country)
         return countryCell
     }
@@ -118,7 +131,10 @@ extension CountryListViewController: UISearchResultsUpdating {
     
     func filterContentForSearchText(_ searchText: String) {
         // added .lowercased() to make searches case independent
-        filteredCountries = viewModel.countries.value.filter { $0.name.lowercased().contains(searchText.lowercased()) || $0.capital.lowercased().contains(searchText.lowercased()) }
+        filteredCountries = self.viewModel.countries.value.filter {
+            $0.name.lowercased().contains(searchText.lowercased())
+                || $0.capital.lowercased().contains(searchText.lowercased())
+        }
         tableView.reloadData()
     }
 }
